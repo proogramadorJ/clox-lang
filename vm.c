@@ -2,6 +2,7 @@
 #include "common.h"
 #include "vm.h"
 #include "debug.h"
+#include "compiler.h"
 
 VM vm;
 
@@ -59,11 +60,11 @@ static interpretResult run(){
     #undef BINARY_OP
 }
 
-interpretResult interpret(Chunk* chunk){
-    vm.chunk = chunk;
-    vm.ip = chunk->code;
-    return run();
+interpretResult interpret(const char* source){
+    compile(source);
+    return INTERPRET_OK;
 }
+
 
 void push(Value value){
     *vm.stackTop = value;

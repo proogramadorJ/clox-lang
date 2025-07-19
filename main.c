@@ -24,7 +24,7 @@ static void repl(){
 static char* readFile(const char* path){
     FILE* file = fopen(path, "rb");
     if(file == NULL){
-        fprint("Could not open file \"%s\".\n", path);
+        fprintf("Could not open file \"%s\".\n", path);
         exit(74);
     }
 
